@@ -22,6 +22,16 @@ gulp.task('scss', () => {
 });
 
 /*
+### CSS Vendor Folder ###
+CSS Framework dosyalarını buraya yükleyin.
+src/cssvendor -> içeriğini src/assets/css/vendor içine yazıyor.
+*/
+gulp.task('cssvendor',()=>{
+  return gulp.src('src/cssvendor/**/*.*')
+  .pipe(gulp.dest('src/assets/css/'));
+ });
+
+ /*
 ### CSS dist Task ###
 src/assets/css -> içeriğini, dist/assets/css içine yazıyor.
 */
@@ -29,16 +39,6 @@ gulp.task('cssdist',()=>{
   return gulp.src('src/assets/css/**/*.*')
   .pipe(gulp.dest('dist/assets/css'));
 });
-
-/*
-### CSS Vendor Folder ###
-CSS Framework dosyalarını buraya yükleyin.
-src/cssvendor -> içeriğini dist/assets/css/vendor içine yazıyor.
-*/
-gulp.task('cssvendor',()=>{
-  return gulp.src('src/cssvendor/**/*.*')
-  .pipe(gulp.dest('src/assets/css/'));
- });
 
 /*### JS Task ###*/
 gulp.task('js', () => {
@@ -50,6 +50,15 @@ gulp.task('js', () => {
   .pipe(gulp.dest('src/assets/js'));
 });
 
+/*### JS Vendor Folder ###
+JS Framework dosyalarını buraya yükleyin.
+src/jsvendor -> içeriğini src/assets/js/vendor içine yazıyor.
+*/
+gulp.task('jsvendor', () => {
+  return gulp.src('src/jsvendor/**/*.*')
+ .pipe(gulp.dest('src/assets/js/'));
+});
+
 /*
 ### JS dist Task ###
 src/assets/js -> içeriğini, dist/assets/js içine yazıyor.
@@ -57,15 +66,6 @@ src/assets/js -> içeriğini, dist/assets/js içine yazıyor.
 gulp.task('jsdist',()=>{
   return gulp.src('src/assets/js/**/*.*')
   .pipe(gulp.dest('dist/assets/js'));
-});
-
-/*### JS Vendor Folder ###
-JS Framework dosyalarını buraya yükleyin.
-src/jsvendor -> içeriğini dist/assets/js/vendor içine yazıyor.
-*/
-gulp.task('jsvendor', () => {
-  return gulp.src('src/jsvendor/**/*.*')
- .pipe(gulp.dest('src/assets/js'));
 });
 
 /*### HTML Task ###*/
