@@ -2,7 +2,7 @@
   "name": "gulp-frontendkit",
   "version": "1.0.0",
   "description": "Frontend için tasarım altyapısı",
-   "scripts": {
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
