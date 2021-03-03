@@ -6,12 +6,13 @@ const cleancss = require('gulp-clean-css');
 const minjs = require('gulp-uglify');
 const rename = require('gulp-rename');
 const sourcemaps = require('gulp-sourcemaps');
+const browserlive = require('browser-sync').create();
 
 
 /*### SCSS To CSS Task ###*/
 gulp.task('scss', () => {
   const precss=[preset({stage: 0,browsers:'last 4 version'})]
-  return gulp.src('src/scss/**/*.scss')
+  return gulp.src('src/scss/style.scss')
   .pipe(sass().on('error',sass.logError))
   .pipe(cleancss())
   .pipe(rename({suffix:'.min'}))
@@ -82,7 +83,7 @@ gulp.task('img', () => {
 
 /*### Watch Task ###*/
 gulp.task('watch', () => {
-  gulp.watch("src/scss/**/*.scss", gulp.task('scss'));
+  gulp.watch("src/scss/style.scss", gulp.task('scss'));
   gulp.watch("src/assets/css/**/*.*", gulp.task('cssdist'));
   gulp.watch("src/cssvendor/**/*.*", gulp.task('cssvendor'));
   gulp.watch("src/js/**/*.js", gulp.task('js'));
@@ -91,6 +92,8 @@ gulp.task('watch', () => {
   gulp.watch("src/*.html", gulp.task('html'));
   gulp.watch("src/assets/img/**/*.*", gulp.task('img'));
 });
+
+
 
 /*### Default Task ###*/
 gulp.task('default', gulp.parallel('scss','cssdist', 'cssvendor', 'js', 'jsdist', 'jsvendor' ,'html', 'img', 'watch'));
