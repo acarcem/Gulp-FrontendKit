@@ -1,5 +1,5 @@
 # Gulp-FrontendKit :one:
-### Frontend için tasarım altyapısı
+### Frontend tasarım altyapısı
 
 ![Gulp](https://github.com/acarcem/Gulp-FrontendKit/blob/main/gulp-frontendkit.jpg).
 
