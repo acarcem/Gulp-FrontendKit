@@ -12,56 +12,56 @@ const sourcemaps = require('gulp-sourcemaps');
 */
 gulp.task('scss', () => {
   const precss=[preset({stage: 0,browsers:'last 4 version'})]
-  return gulp.src('src/assets/scss/style.scss')
+  return gulp.src('scss/style.scss')
   .pipe(sass().on('error',sass.logError))
   .pipe(cleancss())
   .pipe(rename({suffix:'.min'}))
   .pipe(sourcemaps.init())
   .pipe(postcss(precss))
   .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest('src/assets/css'))
-  .pipe(gulp.dest('dist/assets/css'));
+  .pipe(gulp.dest('css'))
+  .pipe(gulp.dest('dist/css'));
  
 });
 
 /*
 ### CSS Framework Folder Task ###
 CSS Framework dosyalarını buraya yükleyin.
-src/assets/css/vendor -> içeriğini dist/assets/css/vendor içine yazıyor.
+css/vendor -> içeriğini dist/css/vendor içine yazıyor.
 */
 gulp.task('css-framework',()=>{
-  return gulp.src('src/assets/css/vendor/**/*.*')
-  .pipe(gulp.dest('dist/assets/css/vendor/'));
+  return gulp.src('css/vendor/**/*.*')
+  .pipe(gulp.dest('dist/css/vendor/'));
  });
 
 /*
 ### Script Folder Task ###
 */
 gulp.task('js', () => {
-  return gulp.src('src/assets/script/*.js')
+  return gulp.src('script/*.js')
   .pipe(rename({suffix:'.min'}))
   .pipe(sourcemaps.init())
   .pipe(minjs())
   .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest('src/assets/js'))
-  .pipe(gulp.dest('dist/assets/js'));
+  .pipe(gulp.dest('js'))
+  .pipe(gulp.dest('dist/js'));
 });
 
 /*
 ### JS Framework Folder Task ###
 JS Framework dosyalarını buraya yükleyin.
-src/assets/js/vendor -> içeriğini dist/assets/js/vendor içine yazıyor.
+js/vendor -> içeriğini dist/js/vendor içine yazıyor.
 */
 gulp.task('js-framework', () => {
-  return gulp.src('src/assets/js/vendor/**/*.*')
-  .pipe(gulp.dest('dist/assets/js/vendor/'));
+  return gulp.src('js/vendor/**/*.*')
+  .pipe(gulp.dest('dist/js/vendor/'));
 });
 
 /*
 ### HTML Task ###
 */
 gulp.task('html', () => {
-  return gulp.src('src/*.html')
+  return gulp.src('*.html')
   .pipe(gulp.dest('dist'));
 });
 
@@ -69,16 +69,16 @@ gulp.task('html', () => {
 ### Font Folder Task ###
 */
 gulp.task('font', () => {
-  return gulp.src('src/assets/font/**/*.*')
-  .pipe(gulp.dest('dist/assets/font'));
+  return gulp.src('font/**/*.*')
+  .pipe(gulp.dest('dist/font'));
 });
 
 /*
 ### Image Task ###
 */
 gulp.task('img', () => {
-   return gulp.src('src/assets/img/**/*')
-  .pipe(gulp.dest('dist/assets/img'));
+   return gulp.src('img/**/*')
+  .pipe(gulp.dest('dist/img'));
 });
 
 
@@ -86,13 +86,13 @@ gulp.task('img', () => {
 ### Watch Task ###
 */
 gulp.task('watch', () => {
-  gulp.watch("src/assets/scss/style.scss", gulp.task('scss'));
-  gulp.watch("src/assets/css/vendor/**/*.*", gulp.task('css-framework'));
-  gulp.watch("src/assets/script/*.js", gulp.task('js'));
-  gulp.watch("src/assets/js/vendor/**/*.*", gulp.task('js-framework'));
-  gulp.watch("src/*.html", gulp.task('html'));
-  gulp.watch("src/assets/font",gulp.task('font'));
-  gulp.watch("src/assets/img/**/*.*", gulp.task('img'));
+  gulp.watch("scss/style.scss", gulp.task('scss'));
+  gulp.watch("css/vendor/**/*.*", gulp.task('css-framework'));
+  gulp.watch("script/*.js", gulp.task('js'));
+  gulp.watch("js/vendor/**/*.*", gulp.task('js-framework'));
+  gulp.watch("*.html", gulp.task('html'));
+  gulp.watch("font",gulp.task('font'));
+  gulp.watch("img/**/*.*", gulp.task('img'));
  });
  
 /*

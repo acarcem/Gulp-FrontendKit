@@ -4,7 +4,7 @@
   "description": "Frontend için tasarım altyapısı",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    },
   "repository": {
     "type": "git",
     "url": "https://github.com/acarcem/Gulp-FrontendKit"
