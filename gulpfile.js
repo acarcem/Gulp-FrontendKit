@@ -6,6 +6,7 @@ const cleancss = require('gulp-clean-css');
 const minjs = require('gulp-uglify');
 const rename = require('gulp-rename');
 const sourcemaps = require('gulp-sourcemaps');
+const babel = require('gulp-babel');
 
 /*
 ### SCSS To CSS Task ###
@@ -20,18 +21,18 @@ gulp.task('scss', () => {
   .pipe(postcss(precss))
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest('css'))
-  .pipe(gulp.dest('dist/css'));
+  .pipe(gulp.dest('app/css'));
  
 });
 
 /*
 ### CSS Framework Folder Task ###
 CSS Framework dosyalarını buraya yükleyin.
-css/vendor -> içeriğini dist/css/vendor içine yazıyor.
+css/vendor -> içeriğini public/css/vendor içine yazıyor.
 */
 gulp.task('css-framework',()=>{
   return gulp.src('css/vendor/**/*.*')
-  .pipe(gulp.dest('dist/css/vendor/'));
+  .pipe(gulp.dest('app/css/vendor/'));
  });
 
 /*
@@ -39,22 +40,23 @@ gulp.task('css-framework',()=>{
 */
 gulp.task('js', () => {
   return gulp.src('script/*.js')
+  .pipe(babel({presets:['@babel/preset-env']}))
   .pipe(rename({suffix:'.min'}))
   .pipe(sourcemaps.init())
   .pipe(minjs())
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest('js'))
-  .pipe(gulp.dest('dist/js'));
+  .pipe(gulp.dest('app/js'));
 });
 
 /*
 ### JS Framework Folder Task ###
 JS Framework dosyalarını buraya yükleyin.
-js/vendor -> içeriğini dist/js/vendor içine yazıyor.
+js/vendor -> içeriğini app/js/vendor içine yazıyor.
 */
 gulp.task('js-framework', () => {
   return gulp.src('js/vendor/**/*.*')
-  .pipe(gulp.dest('dist/js/vendor/'));
+  .pipe(gulp.dest('app/js/vendor/'));
 });
 
 /*
@@ -62,7 +64,7 @@ gulp.task('js-framework', () => {
 */
 gulp.task('html', () => {
   return gulp.src('*.html')
-  .pipe(gulp.dest('dist'));
+  .pipe(gulp.dest('app'));
 });
 
 /*
@@ -70,7 +72,7 @@ gulp.task('html', () => {
 */
 gulp.task('font', () => {
   return gulp.src('font/**/*.*')
-  .pipe(gulp.dest('dist/font'));
+  .pipe(gulp.dest('app/font'));
 });
 
 /*
@@ -78,9 +80,8 @@ gulp.task('font', () => {
 */
 gulp.task('img', () => {
    return gulp.src('img/**/*')
-  .pipe(gulp.dest('dist/img'));
+  .pipe(gulp.dest('app/img'));
 });
-
 
 /*
 ### Watch Task ###

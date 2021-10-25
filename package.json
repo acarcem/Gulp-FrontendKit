@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Frontend için tasarım altyapısı",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-    },
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ok": "gulp"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/acarcem/Gulp-FrontendKit"
@@ -13,7 +14,10 @@
   "author": "Cem Acar",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
     "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-postcss": "^9.0.0",
     "gulp-rename": "^2.0.0",
